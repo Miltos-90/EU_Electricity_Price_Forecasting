@@ -16,10 +16,10 @@ Several power markets exist in Europe, but the predictions here are limited to t
 This corresponds to a total of 20 different bidding zones, or $20 \times 24 = 480$ hourly prices (targets).
 The [data](https://doi.org/10.25832/time_series/2020-10-06) used for this task contains different kinds of timeseries relevant for power system modelling. Namely electricity consumption, as well as wind and solar power generation and capacities. The data is aggregated either by country, control area or bidding zone. 
 Geographical coverage includes the EU and some neighbouring countries. 
-All variables are provided in hourly resolution, provided by TSOs and power exchanges via ENTSO-E Transparency, covering the period 2015-mid 2020. 
-Several notebook provide more insight on the available timeseries and collection process [here](https://doi.org/10.25832/time_series/2020-10-06).
-After the EDA process detailed in the notebooks of this repo (see notebooks folder), 438 variables have been retained (excluding electricity prices) and will be used to forecast electricity prices.
-In addition, information regading national/religious holidays of various countries has also been used ([source](https://www.timeanddate.com/)).
+All variables are provided in hourly resolution by TSOs, and power exchanges are provided via ENTSO-E Transparency, covering the period between 2015-mid 2020. 
+Additional information on the available data can be found [here](https://doi.org/10.25832/time_series/2020-10-06).
+Following the EDA process (see notebooks folder for the corresponding notebooks), 438 variables have been retained (excluding electricity prices) and will be used for the forecasting.
+In addition, information regading national/religious holidays of the various countries has also been used ([source](https://www.timeanddate.com/)).
 
 ## Libraries
 
@@ -40,7 +40,7 @@ from src.preprocessing import DatasetGenerator
 ## Data Import and Preprocessing
 
 The following cell reads the input data, i.e. features engineered from external predictors (see EDA notebooks), electricity prices, and national holidays. The data is split into train/test sets, with the last one year of data (2019-2020) retained as the test set.
-External predictors are scaled using the median and interquantile range, and for electricity prices the inverse hyperbolic sine transform is applied, and the resulting time-series undergo first-order time-differencing. The resulting 480 time-series correspond to the targets that will be predicted.
+External predictors are scaled using the median and interquantile range, and for electricity prices the inverse hyperbolic sine transform is applied, followed by first-order time-differencing. The resulting 480 time-series correspond to the targets that will be predicted. 
 
 
 
@@ -89,8 +89,8 @@ More specifically, the model inputs for each bidding zone are provided by the *D
 * Week number and day number (of the week)
 
 Based on this data, each model (KRR/ELM) is tuned using time-series cross validation with 4 folds on the training set, and the final predictions for each target (target = electricity price of a specific bidding zone at a specific hour of every day) are obtained from the best model. 
+The best model corresponds to the model commiting the lowest Mean Absolute Error (MAE) on the validation sets.
 No model averaging or ensembling (stacking, bagging, etc) is considered. 
-The best model corresponds to the model commiting the lowest Mean Absolute Error (MAE) on average on the validation sets.
 All constants used in the training process are defined in the configuration file (config.py).
 
 
