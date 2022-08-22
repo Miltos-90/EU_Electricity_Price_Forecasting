@@ -1,7 +1,7 @@
 ## Electricity Price Forecasting
 
 The aim is to predict the spot prices of electricity in several European bidding zones for short-term power trading.
-The workhorse og power trading in Europe is the *day-ahead* market, with its once-per-day uniform-price auction, according to the Figure below ([source](https://doi.org/10.1016/j.apenergy.2021.116983))
+The workhorse og power trading in Europe is the *day-ahead* market, with its once-per-day uniform-price auction, according to the Figure below ([source](https://doi.org/10.1016/j.apenergy.2021.116983)).
 
 ![market](./imm/market.PNG)
 
