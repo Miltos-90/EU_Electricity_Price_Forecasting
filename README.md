@@ -88,8 +88,8 @@ More specifically, the model inputs for each bidding zone are provided by the *D
 * National / religion-related holiday indicators for the most frequent holiday types for each country (e.g. christmas, new-year's, easter, etc.)
 * Week number and day number (of the week)
 
-Based on this data, each model (KRR/ELM) is tuned using time-series cross validation with 4 folds on the training set, and the final predictions for each target (target = electricity price of a specific bidding zone at a specific hour of every day) are obtained from the best model. 
-The best model corresponds to the model commiting the lowest Mean Absolute Error (MAE) on the validation sets.
+Based on this data, each model (KRR/ELM) is tuned using time-series cross validation with 4 folds on the training set.
+The predictions for each target (target = electricity price of a specific bidding zone at a specific hour of every day) are obtained from the best model, i.e. the model commiting the lowest average Mean Absolute Error (MAE) on the validation sets.
 No model averaging or ensembling (stacking, bagging, etc) is considered. 
 All constants used in the training process are defined in the configuration file (config.py).
 
