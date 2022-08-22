@@ -14,7 +14,7 @@ Several power markets exist in Europe, but the predictions here are limited to t
 * Sweden (4 bidding zones)
 
 This corresponds to a total of 20 different bidding zones, or $20 \times 24 = 480$ hourly prices (targets).
-The [data](https://doi.org/10.25832/time_series/2020-10-06) used for this task contains different kinds of relevant timeseries relevant for power system modelling, namely electricity consumption (load) as well as wind and solar power generation and capacities. The data is aggregated either by country, control area or bidding zone. 
+The [data](https://doi.org/10.25832/time_series/2020-10-06) used for this task contains different kinds of timeseries relevant for power system modelling. Namely electricity consumption, as well as wind and solar power generation and capacities. The data is aggregated either by country, control area or bidding zone. 
 Geographical coverage includes the EU and some neighbouring countries. 
 All variables are provided in hourly resolution, provided by TSOs and power exchanges via ENTSO-E Transparency, covering the period 2015-mid 2020. 
 Several notebook provide more insight on the available timeseries and collection process [here](https://doi.org/10.25832/time_series/2020-10-06).
